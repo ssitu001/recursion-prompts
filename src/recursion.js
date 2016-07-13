@@ -5,11 +5,14 @@
 // Example:  5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5);  // 120
 var factorial = function(n) {
+  return n < 0 ? null : n < 2 ? 1 : n * factorial(n-1);
+
 };
 
 // 2. Compute the sum of an array of integers.
 // Example:  sum([1, 2, 3, 4, 5, 6]);  // 21
 var sum = function(array) {
+  return !array.length ? 0 : array[0] + sum(array.slice(1));
 };
 
 // 3. Sum all numbers in an array containing nested arrays.
@@ -53,6 +56,17 @@ var reverse = function(string) {
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
+  string = string.toLowerCase().split(" ").join("");
+  
+  if(string.length === 0 || string.length === 1) {
+    return true;
+  }
+  
+  if(string.charAt(0) !== string.charAt(string.length-1)) {
+    return false;
+  }
+  
+  return palindrome(string.slice(1, -1))
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
